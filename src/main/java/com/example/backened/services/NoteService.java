@@ -39,8 +39,12 @@ public class NoteService
 
   public Note findByOwner (String owner) 
   {
-    return noteRepo.findByOwner(owner)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));
+    Note result = noteRepo.findByOwnerIgnoreCase(owner);
+
+    if (result == null)
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found");
+    else
+      return result;
   }
 
   public Note update (Long id, Note note) 

@@ -1,18 +1,10 @@
 package com.example.backened.repositories;
 
 import com.example.backened.entities.Note;
-import java.util.Collection;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface NoteRepository {
 
-  Collection<Note> findAll ();
-
-  Note save (Note note);
-
-  Optional<Note> findById (Long id);
-
-  Optional<Note> findByOwner (String owner);
-
-  void deleteById (Long id);
+public interface NoteRepository extends JpaRepository<Note, Long> 
+{
+  Note findByOwnerIgnoreCase(String username);
 }
