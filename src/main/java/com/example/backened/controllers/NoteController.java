@@ -2,7 +2,6 @@ package com.example.backened.controllers;
 
 import com.example.backened.dto.NoteDto;
 import com.example.backened.dto.Views;
-import com.example.backened.entities.Note;
 import com.example.backened.services.NoteService;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.swagger.v3.oas.annotations.Operation;
