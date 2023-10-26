@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfig {
 
   @Bean
-  public OpenAPI openAPI() {
+  public OpenAPI openAPI() 
+  {
     return new OpenAPI()
         .info(new Info()
             .title("Backend REST API")

@@ -43,7 +43,7 @@ public class NoteController {
   public NoteDto create (@RequestBody @JsonView(value = Views.Post.class) NoteDto note) 
   {
     log.debug ("Create note: {}", note);
-    return noteService.save (note);
+    return noteService.create (note);
   }
 
   @Operation(
@@ -82,6 +82,10 @@ public class NoteController {
     return noteService.findById (id);
   }
 
+  @Operation(
+      summary = "Update a Note by Id",
+      description = "Update a Note object by specifying its id.",
+      tags = {"put"})
   @PutMapping("/{id}")
   @JsonView(value = Views.Get.class)
   public NoteDto update (
@@ -98,7 +102,7 @@ public class NoteController {
       description = "Delete a Note object by specifying its id.",
       tags = {"delete"})
   @DeleteMapping("/{id}")
-  void deleteEmployee (
+  public void deleteEmployee (
     @Parameter(description = "Note Id.", example = "1")
     @PathVariable Long id) 
   {
