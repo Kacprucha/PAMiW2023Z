@@ -32,14 +32,11 @@ public class NoteService
       .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));
   }
 
-  public Note findByOwner (String owner) 
+  public NoteDto findByOwner (String owner) 
   {
-    Note result = noteRepo.findByOwnerIgnoreCase(owner);
-
-    if (result == null)
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found");
-    else
-      return result;
+    return noteRepo.findByOwnerIgnoreCase(owner)
+      .map(noteMapper::toDto)
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));
   }
 
   public NoteDto create(NoteDto note) 
