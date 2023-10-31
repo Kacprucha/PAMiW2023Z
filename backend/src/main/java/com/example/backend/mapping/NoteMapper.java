@@ -1,8 +1,8 @@
-package com.example.backened.mapping;
+package com.example.backend.mapping;
 
 
-import com.example.backened.dto.NoteDto;
-import com.example.backened.entities.Note;
+import com.example.backend.dto.NoteDto;
+import com.example.backend.entities.Note;
 import org.mapstruct.Mapper;
 
 @Mapper

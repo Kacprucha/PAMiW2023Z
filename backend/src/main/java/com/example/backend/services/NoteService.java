@@ -1,9 +1,9 @@
-package com.example.backened.services;
+package com.example.backend.services;
 
-import com.example.backened.dto.NoteDto;
-import com.example.backened.entities.Note;
-import com.example.backened.mapping.NoteMapper;
-import com.example.backened.repositories.NoteRepository;
+import com.example.backend.dto.NoteDto;
+import com.example.backend.entities.Note;
+import com.example.backend.mapping.NoteMapper;
+import com.example.backend.repositories.NoteRepository;
 import java.util.Collection;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;

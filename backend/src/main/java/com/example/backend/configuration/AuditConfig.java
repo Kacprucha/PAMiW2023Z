@@ -1,4 +1,4 @@
-package com.example.backened.configuration;
+package com.example.backend.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

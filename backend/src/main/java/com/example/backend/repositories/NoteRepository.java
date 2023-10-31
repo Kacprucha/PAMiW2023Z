@@ -1,6 +1,6 @@
-package com.example.backened.repositories;
+package com.example.backend.repositories;
 
-import com.example.backened.entities.Note;
+import com.example.backend.entities.Note;
 
 import java.util.Optional;
 

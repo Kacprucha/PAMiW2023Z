@@ -1,4 +1,4 @@
-package com.example.backened.dto;
+package com.example.backend.dto;
 
 public class Views {
 

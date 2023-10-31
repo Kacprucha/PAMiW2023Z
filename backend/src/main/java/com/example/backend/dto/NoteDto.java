@@ -1,4 +1,4 @@
-package com.example.backened.dto;
+package com.example.backend.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import io.swagger.v3.oas.annotations.media.Schema;

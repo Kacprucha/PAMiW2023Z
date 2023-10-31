@@ -1,4 +1,4 @@
-package com.example.backened.configuration;
+package com.example.backend.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
