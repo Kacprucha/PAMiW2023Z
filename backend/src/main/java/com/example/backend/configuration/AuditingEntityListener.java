@@ -1,4 +1,4 @@
-package com.example.backend.entities;
+package com.example.backend.configuration;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;

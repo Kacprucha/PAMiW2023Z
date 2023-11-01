@@ -32,7 +32,7 @@ public class NoteService
       .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));
   }
 
-  public Collection<NoteDto> findByOwner (String owner) 
+  public Collection<NoteDto> findByCreatedBy (String owner) 
   {
     return noteRepo.findByCreatedBy(owner).stream()
       .map(noteMapper::toDto)

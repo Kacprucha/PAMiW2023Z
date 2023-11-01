@@ -29,7 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Notes", description = "Notes management APIs")
 @RequestMapping(value = "notes")
 @RequiredArgsConstructor
-public class NoteController {
+public class NoteController 
+{
 
   private final NoteService noteService;
 
@@ -121,6 +122,6 @@ public class NoteController {
     @PathVariable String owner)
   {
     log.debug ("Find created by owner: {}", owner);
-    return noteService.findByOwner(owner);
+    return noteService.findByCreatedBy (owner);
   }
 }
