@@ -59,7 +59,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	
+   		<dependency>
+    		<groupId>org.springframework.security</groupId>
+     		<artifactId>spring-security-core</artifactId>
+    		<version>5.1.6.RELEASE</version>
+   		</dependency>
+ 	</dependencies>
 
 	<build>
 		<plugins>
@@ -73,6 +79,9 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<profiles>
+                		<profile>local</profile>
+            		</profiles>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -105,15 +114,6 @@
           			</compilerArgs>
         		</configuration>
       		</plugin>
-			<plugin>
-        		<groupId>org.springframework.boot</groupId>
-        		<artifactId>spring-boot-maven-plugin</artifactId>
-        		<configuration>
-            		<profiles>
-                		<profile>local</profile>
-            		</profiles>
-        		</configuration>
-    		</plugin>
 		</plugins>
 	</build>
 
