@@ -121,7 +121,7 @@ public class NoteController
     @Parameter(description = "Owner of notes.", example = "anonymous")
     @PathVariable String owner)
   {
-    log.debug ("Find created by owner: {}", owner);
+    log.debug ("Find notes created by owner: {}", owner);
     return noteService.findByCreatedBy (owner);
   }
 }
