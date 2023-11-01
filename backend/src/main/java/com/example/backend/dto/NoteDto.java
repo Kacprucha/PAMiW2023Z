@@ -15,10 +15,6 @@ public class NoteDto {
   @JsonView({Views.Get.class, Views.Put.class})
   Long id;
 
-  @Schema(description = "Name of the owner", example = "Jan")
-  @JsonView({Views.Get.class, Views.Put.class, Views.Post.class})
-  String owner;
-
   @Schema(description = "Is note private", example = "false")
   @JsonView({Views.Get.class, Views.Put.class, Views.Post.class})
   Boolean locked;

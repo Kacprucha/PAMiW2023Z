@@ -24,7 +24,6 @@ public class Note extends Auditable
   @Id
   @GeneratedValue
   private Long id;
-  private String owner;
   private Boolean locked;
   private String title;
   private String text;

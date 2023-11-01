@@ -102,11 +102,25 @@ public class NoteController {
       description = "Delete a Note object by specifying its id.",
       tags = {"delete"})
   @DeleteMapping("/{id}")
-  public void deleteEmployee (
+  public void deleteNote (
     @Parameter(description = "Note Id.", example = "1")
     @PathVariable Long id) 
   {
     log.debug ("Delete note with id: {}", id);
     noteService.deleteById (id);
+  }
+
+  @Operation(
+      summary = "Find all Notes created by owner",
+      description = "Get all Note objects created by owner.",
+      tags = {"get"})
+  @GetMapping("/{owner}")
+  @JsonView(Views.Get.class)
+  public Collection<NoteDto> findByCreatedBy (
+    @Parameter(description = "Owner of notes.", example = "anonymous")
+    @PathVariable String owner)
+  {
+    log.debug ("Find created by owner: {}", owner);
+    return noteService.findByOwner(owner);
   }
 }
