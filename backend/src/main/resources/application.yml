@@ -9,6 +9,13 @@ logging:
   level:
     com.example.backened: DEBUG
 
+spring:
+  security:
+    user:
+      name: user
+      password: password
+    roles: USER
+
 ---
 
 spring:
@@ -17,7 +24,7 @@ spring:
       on-profile: dev
 
   datasource:
-    url: jdbc:postgresql://db:5432/backened
+    url: jdbc:postgresql://db:5432/backend
     username: postgres
     password: postgres
   jpa:

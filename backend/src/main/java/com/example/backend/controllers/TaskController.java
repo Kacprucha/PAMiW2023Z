@@ -117,7 +117,7 @@ public class TaskController
         summary = "Find all Tasks created by owner",
         description = "Get all Tasks objects created by owner.",
         tags = {"get"})
-    @GetMapping("/{owner}")
+    @GetMapping("/author/{owner}")
     @JsonView(Views.Get.class)
     public Collection<TaskDto> findByCreatedBy (
         @Parameter(description = "Owner of tasks.", example = "anonymous")

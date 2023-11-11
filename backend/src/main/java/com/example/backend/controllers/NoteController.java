@@ -14,6 +14,7 @@ import java.util.Collection;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ public class NoteController
       description = "Create a Note object.",
       tags = {"post"})
   @PostMapping
+  @PreAuthorize("permitAll()")
   @ResponseStatus(HttpStatus.CREATED)
   @JsonView(value = Views.Get.class)
   public NoteDto create (@RequestBody @JsonView(value = Views.Post.class) NoteDto note) 
@@ -52,6 +54,7 @@ public class NoteController
       description = "Get all Note objects.",
       tags = {"get"})
   @GetMapping
+  @PreAuthorize("permitAll()")
   @JsonView(Views.Get.class)
   public Collection<NoteDto> findAll()
   {
@@ -77,7 +80,7 @@ public class NoteController
   @JsonView(value = Views.Get.class)
   public NoteDto findById (
     @Parameter(description = "Note Id.", example = "1")
-    @PathVariable Long id)
+    @PathVariable(value = "id") Long id)
   {
     log.debug ("Find note with id: {}", id);
     return noteService.findById (id);
@@ -115,7 +118,7 @@ public class NoteController
       summary = "Find all Notes created by owner",
       description = "Get all Note objects created by owner.",
       tags = {"get"})
-  @GetMapping("/{owner}")
+  @GetMapping("/author/{owner}")
   @JsonView(Views.Get.class)
   public Collection<NoteDto> findByCreatedBy (
     @Parameter(description = "Owner of notes.", example = "anonymous")
