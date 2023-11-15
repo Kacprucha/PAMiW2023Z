@@ -29,5 +29,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+/frontend/node_modules/
+/.pnp
+.pnp.js
+
 ### VS Code ###
 .vscode/
