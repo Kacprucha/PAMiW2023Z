@@ -12,6 +12,7 @@ export const NavBar = () => {
       <Nav>
         <NavbarBrand tag={NavLink} to='/' style={style}>Home</NavbarBrand>
         <NavbarBrand tag={NavLink} to='/notes' style={style}>Notes</NavbarBrand>
+        <NavbarBrand tag={NavLink} to='/tasks' style={style}>Tasks</NavbarBrand>
       </Nav>
     </Navbar>
   )
