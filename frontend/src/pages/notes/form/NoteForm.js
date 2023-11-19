@@ -67,6 +67,12 @@ export const NoteForm = () => {
             autoComplete='Text'
           />
         </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input type="checkbox" />{' '}
+            Is it private note
+          </Label>
+        </FormGroup>
         <FormGroup>
           <Button color='primary' type='submit'>Save</Button>{' '}
           <Button color='secondary' tag={Link} to='/notes'>Cancel</Button>
