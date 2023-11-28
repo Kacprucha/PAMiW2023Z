@@ -3,6 +3,7 @@ package com.example.backend.controllers;
 import java.util.Collection;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @Tag(name = "Tasks", description = "Tasks management APIs")
 @RequestMapping(value = "tasks")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000/tasks")
 public class TaskController 
 {
     private final TaskService taskService;
