@@ -10,8 +10,8 @@ export const TaskForm = () => {
   const navigate = useNavigate()
   const { taskId } = useParams()
   const [task, setTask] = useState({
-    title: '',
-    text: ''
+    text: '',
+    deadline: new Date()
   })
   const [startdate, setStartDate] = useState (new Date())
 

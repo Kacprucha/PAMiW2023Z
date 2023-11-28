@@ -7,6 +7,7 @@ export const NoteForm = () => {
   const navigate = useNavigate()
   const { noteId } = useParams()
   const [note, setNote] = useState({
+    locked: false,
     title: '',
     text: ''
   })
@@ -69,7 +70,7 @@ export const NoteForm = () => {
         </FormGroup>
         <FormGroup check>
           <Label check>
-            <Input type="checkbox" />{' '}
+            <Input type="checkbox" onChange={handleChange}/>{' '}
             Is it private note
           </Label>
         </FormGroup>
