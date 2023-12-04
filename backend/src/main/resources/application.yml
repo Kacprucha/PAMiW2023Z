@@ -35,7 +35,7 @@ springdoc:
 
 logging:
   level:
-    com.example.backened: DEBUG
+    com.example.backend: DEBUG
 
 spring:
   security:
