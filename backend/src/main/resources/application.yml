@@ -1,3 +1,11 @@
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: ${app.jwt.issuer-uri}
+          jwk-set-uri: ${app.jwt.issuer-uri}/protocol/openid-connect/certs
+
 management:
   endpoints:
     enabled-by-default: false
@@ -33,16 +41,18 @@ springdoc:
     tagsSorter: alpha
     filter: true
 
+app:
+  cors:
+    allowed-origins: http://localhost:3000
+  jwt:
+    keycloak: http://localhost:8443
+    realm: app
+    issuer-uri: ${app.jwt.keycloak}/realms/${app.jwt.realm}
+    resource-client-id: frontend-web
+
 logging:
   level:
     com.example.backend: DEBUG
-
-spring:
-  security:
-    user:
-      name: user
-      password: password
-    roles: USER
 
 ---
 
@@ -59,6 +69,10 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update # (create, create-drop, validate, update)
+
+app:
+  jwt:
+    keycloak: http://keycloak:8443
 
 ---
 

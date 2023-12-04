@@ -21,7 +21,6 @@ import java.util.Optional;
 
 
 @Configuration
-@EnableWebSecurity
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class AuditConfig 
 {
@@ -41,7 +40,7 @@ public class AuditConfig
                 .anyRequest().authenticated()
             )
             // Use basic authentication (user/pass)
-            .httpBasic(withDefaults());
+            .formLogin(withDefaults());
 
         return http.build();
     }
