@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 
 @Configuration
-@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@EnableJpaAuditing
 public class AuditConfig 
 {
     @Bean

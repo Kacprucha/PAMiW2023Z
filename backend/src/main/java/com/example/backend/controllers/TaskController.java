@@ -33,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
 @Tag(name = "Tasks", description = "Tasks management APIs")
 @RequestMapping(value = "tasks")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000/tasks")
 public class TaskController 
 {
     private final TaskService taskService;
