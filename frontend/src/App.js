@@ -6,6 +6,7 @@ import { NotesPage } from './pages/notes/NotesPage'
 import { NoteForm } from './pages/notes/form/NoteForm'
 import { TasksPage } from './pages/tasks/TasksPage'
 import { TaskForm } from './pages/tasks/form/TaskForm'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 export default function App () {
   return (
@@ -13,10 +14,12 @@ export default function App () {
       <NavBar />
       <Routes>
         <Route index element={<Home />} />
-        <Route path='/notes' element={<NotesPage />} />
-        <Route path='/notes/:noteId' element={<NoteForm />} />
-        <Route path='/tasks' element={<TasksPage />} />
-        <Route path='/tasks/:taskId' element={<TaskForm />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/notes' element={<NotesPage />} />
+          <Route path='/notes/:noteId' element={<NoteForm />} />
+          <Route path='/tasks' element={<TasksPage />} />
+          <Route path='/tasks/:taskId' element={<TaskForm />} />
+        </Route>
       </Routes>
     </>
   )
