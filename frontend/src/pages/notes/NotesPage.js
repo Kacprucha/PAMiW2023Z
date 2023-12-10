@@ -10,7 +10,7 @@ export const NotesPage = () => {
   const [notes, setNotes] = useState([])
 
   useEffect(() => {
-    notesApi.getAll()
+    notesApi.getAll(accessToken)
       .then((res) => {
         setNotes(res.data)
       })

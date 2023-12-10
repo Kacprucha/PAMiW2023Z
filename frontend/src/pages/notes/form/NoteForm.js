@@ -23,7 +23,7 @@ export const NoteForm = () => {
           setNote(res.data)
         })
     }
-  }, [noteId])
+  }, [noteId, accessToken])
 
   const handleChange = (event) => {
     const target = event.target
