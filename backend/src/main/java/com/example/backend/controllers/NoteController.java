@@ -33,7 +33,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class NoteController 
 {
-
   private final NoteService noteService;
 
   @Operation(
