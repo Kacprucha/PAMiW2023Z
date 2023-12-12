@@ -16,7 +16,6 @@ export const NoteForm = () => {
   })
 
   useEffect(() => {
-    console.log(accessToken);
     if (noteId !== 'new') {
       notesApi.getById(noteId, accessToken)
         .then((res) => {
