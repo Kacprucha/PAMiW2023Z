@@ -20,7 +20,7 @@ export const TaskForm = () => {
 
   useEffect(() => {
     if (taskId !== 'new') {
-      tasksApi.getById(taskId)
+      tasksApi.getById(taskId, accessToken)
         .then((res) => {
           setTask(res.data)
         })
@@ -38,9 +38,7 @@ export const TaskForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log(task.id)
     if (task.id) {
-      console.log(accessToken);
       await tasksApi.update(task.id, task, accessToken)
     } else {
       await tasksApi.create(task, accessToken)
