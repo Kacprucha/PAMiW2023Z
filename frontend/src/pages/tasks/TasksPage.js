@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup, Container, Table } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { tasksApi } from '../../api/tasksApi'
+import { useAuth } from 'react-oidc-context'
 
 export const TasksPage = () => {
+  const auth = useAuth()
+  const accessToken = auth.user.access_token
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    tasksApi.getAll()
+    tasksApi.getAll(accessToken)
       .then((res) => {
         setTasks(res.data)
       })
@@ -15,7 +18,7 @@ export const TasksPage = () => {
   }, [])
 
   const remove = (id) => {
-    tasksApi.delete(id)
+    tasksApi.delete(id,accessToken)
       .then(() => {
         setTasks((tasks) => tasks.filter((note) => note.id !== id))
       })
@@ -50,8 +53,9 @@ export const TasksPage = () => {
             <tr>
               <th width='80px'>Id</th>
               <th>Text</th>
-              <th width='300px'>
-                <div align='center'>To do date</div>
+              <th width='300px'>To do date</th>
+              <th width='120px'>
+                <div align='center'>Action</div>
               </th>
             </tr>
           </thead>

@@ -1,30 +1,41 @@
 import { backendApi } from './backendApi'
+import { bearerAuth } from './bearerAuth'
 
 const tasksClient = backendApi('/tasks')
 
 export const tasksApi = {
-  getAll () {
+  getAll (token) {
     console.log('Fetching tasks')
-    return tasksClient.get('')
+    return tasksClient.get('', {
+      headers: { Authorization: bearerAuth(token) }
+    })
   },
 
-  getById (id) {
+  getById (id, token) {
     console.log('Get task', id)
-    return tasksClient.get(`/${id}`)
+    return tasksClient.get(`/${id}`, {
+      headers: { Authorization: bearerAuth(token) }
+    })
   },
 
-  create (task) {
+  create (task, token) {
     console.log('Create task', task)
-    return tasksClient.post('', task)
+    return tasksClient.post('', task, {
+      headers: { Authorization: bearerAuth(token) }
+    })
   },
 
-  update (id, task) {
+  update (id, task, token) {
     console.log('Update task', id, task)
-    return tasksClient.put(`/${id}`, task)
+    return tasksClient.put(`/${id}`, task, {
+      headers: { Authorization: bearerAuth(token) }
+    })
   },
 
-  delete (id) {
+  delete (id, token) {
     console.log('Delete task', id)
-    return tasksClient.delete(`/${id}`)
+    return tasksClient.delete(`/${id}`, {
+      headers: { Authorization: bearerAuth(token) }
+    })
   }
 }

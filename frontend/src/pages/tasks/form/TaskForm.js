@@ -3,17 +3,20 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap'
 import { tasksApi } from '../../../api/tasksApi'
 import DatePicker from 'react-datepicker';
+import { useAuth } from 'react-oidc-context'
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const TaskForm = () => {
+  const auth = useAuth()
+  const accessToken = auth.user.access_token
   const navigate = useNavigate()
   const { taskId } = useParams()
   const [task, setTask] = useState({
     text: '',
     deadline: new Date()
   })
-  const [startdate, setStartDate] = useState (new Date())
+  const [startDate, setStartDate] = useState (new Date())
 
   useEffect(() => {
     if (taskId !== 'new') {
@@ -35,10 +38,12 @@ export const TaskForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    console.log(task.id)
     if (task.id) {
-      await tasksApi.update(task.id, task)
+      console.log(accessToken);
+      await tasksApi.update(task.id, task, accessToken)
     } else {
-      await tasksApi.create(task)
+      await tasksApi.create(task, accessToken)
     }
     navigate('/tasks')
   }
@@ -61,7 +66,7 @@ export const TaskForm = () => {
           />
         </FormGroup>
         <FormGroup>
-            <DatePicker selected={startdate} onChange={(date) => setStartDate(date)} />
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
         </FormGroup>
         <FormGroup>
           <Button color='primary' type='submit'>Save</Button>{' '}
