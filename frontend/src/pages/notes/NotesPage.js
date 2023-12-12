@@ -30,7 +30,8 @@ export const NotesPage = () => {
         <td style={{ whiteSpace: 'nowrap' }}>{note.id}</td>
         <td style={{ whiteSpace: 'nowrap' }}>{note.title}</td>
         <td style={{ whiteSpace: 'nowrap' }}>{note.text}</td>
-        <td style={{ whiteSpace: 'nowrap' }}>{note.createdBy}</td>
+        <td style={{ whiteSpace: 'nowrap' }}>{note.locked.toString()}</td>
+        <td style={{ whiteSpace: 'nowrap' }}>{note.createdBy ? note.createdBy : "anonymus"}</td>
         <td align='center'>
           <ButtonGroup>
             <Button size='sm' color='primary' tag={Link} to={'/notes/' + note.id}>
@@ -55,6 +56,7 @@ export const NotesPage = () => {
               <th width='80px'>Id</th>
               <th>Title</th>
               <th>Text</th>
+              <th>Locked</th>
               <th>Created By</th>
               <th width='120px'>
                 <div align='center'>Action</div>
