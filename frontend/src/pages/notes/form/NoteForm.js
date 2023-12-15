@@ -14,6 +14,7 @@ export const NoteForm = () => {
     title: '',
     text: ''
   })
+  const [isChecked, setIsChecked] = useState(Boolean(note.locked));
 
   useEffect(() => {
     if (noteId !== 'new') {
@@ -25,9 +26,16 @@ export const NoteForm = () => {
   }, [noteId, accessToken])
 
   const handleChange = (event) => {
+
     const target = event.target
-    const value = target.value
     const name = target.name
+    let value = target.value
+
+    if(target.name === 'locked')
+    {
+      setIsChecked(!isChecked)
+      value = !isChecked
+    }
 
     setNote({ ...note, [name]: value })
   }
@@ -73,7 +81,13 @@ export const NoteForm = () => {
         </FormGroup>
         <FormGroup check>
           <Label check>
-            <Input type="checkbox" onChange={handleChange}/>{' '}
+            <Input 
+              id='private'
+              name='locked' 
+              type='checkbox' 
+              checked={isChecked}
+              value={note.locked}
+              onChange={handleChange}/>{' '}
             Is it private note
           </Label>
         </FormGroup>
