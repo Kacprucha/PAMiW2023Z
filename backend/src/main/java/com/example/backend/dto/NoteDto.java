@@ -28,6 +28,6 @@ public class NoteDto
   @JsonView({Views.Get.class, Views.Put.class, Views.Post.class})
   String text;
 
-  @JsonView({Views.Get.class})
+  @JsonView({Views.Get.class, Views.Put.class})
   String createdBy;
 }
