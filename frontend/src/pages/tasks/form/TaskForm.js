@@ -38,6 +38,9 @@ export const TaskForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    task.deadline = startDate;
+    console.log(startDate)
+
     if (task.id) {
       await tasksApi.update(task.id, task, accessToken)
     } else {
@@ -64,7 +67,7 @@ export const TaskForm = () => {
           />
         </FormGroup>
         <FormGroup>
-            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+            <DatePicker name='deadline' selected={startDate} onChange={(date) => setStartDate(date)} />
         </FormGroup>
         <FormGroup>
           <Button color='primary' type='submit'>Save</Button>{' '}

@@ -18,6 +18,13 @@ export const tasksApi = {
     })
   },
 
+  getTop3ByUpdateDate(token) {
+    console.log('Get 3 last updated tasks')
+    return tasksClient.get(`/last-updated`, {
+      headers: { Authorization: bearerAuth(token) }
+    })
+  },
+
   create (task, token) {
     console.log('Create task', task)
     return tasksClient.post('', task, {

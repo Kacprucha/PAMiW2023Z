@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './Home.css'
 import { notesApi } from '../../api/notesApi'
+import { tasksApi } from '../../api/tasksApi'
 import { useAuth } from 'react-oidc-context'
 
 export const Home = () => {
   const auth = useAuth()
   const [notes, setNotes] = useState([])
+  const [tasks, setTasks] = useState([])
 
   useEffect(() => {
     console.log(auth.isAuthenticated)
@@ -17,6 +19,10 @@ export const Home = () => {
           setNotes(res.data)
         })
         .catch(err => console.error('[Fetch Error]:', err))
+      tasksApi.getTop3ByUpdateDate(accessToken)
+        .then((res) => {
+          setTasks(res.data)
+        })
     }
   }, [auth.isAuthenticated])
 
@@ -36,7 +42,9 @@ export const Home = () => {
             </div>
 
             <div className='box'>
-              <TaskInstance title="Zadanie 1" text="nisancicawncaincaciawncacaicniwanc" data="10:12:2023"/>
+              <TaskInstance title={"1"} text={tasks[0]?.text ? tasks[0].text : ""} data={tasks[0]?.deadline ? tasks[0].deadline : ""}/>
+              <TaskInstance title={"2"} text={tasks[1]?.text ? tasks[1].text : ""} data={tasks[1]?.deadline ? tasks[1].deadline : ""}/>
+              <TaskInstance title={"3"} text={tasks[2]?.text ? tasks[2].text : ""} data={tasks[2]?.deadline ? tasks[2].deadline : ""}/>
             </div>
           </div>
         )}
@@ -51,21 +59,37 @@ const NoteInstance = (props) => {
 
   return (
     <>
-      <h2 style={{ color: 'darkblue' }}>{"- " + title}</h2>
-      <p style={{ color: 'darkblue' }}>{text}</p>
+      <h2 style={{ color: 'black' }}>{"- " + title}</h2>
+      <p style={{ color: 'black' }}>{text}</p>
     </>
   )
 }
 
 const TaskInstance = (props) => {
-
   const {title, text, data} = props;
+  let color = '';
+  let dataDate = new Date(data)
+
+  const currentDate = new Date();
+  const differenceInDays = Math.floor(
+    (dataDate - currentDate) / (1000 * 60 * 60 * 24)
+  );
+
+  if (differenceInDays >= 5) {
+    color = 'black';
+  } else if (differenceInDays >= 1) {
+    color ='orange';
+  } else {
+    color ='red';
+  }
+
+  console.log(color + " | " + differenceInDays)
 
   return (
     <>
-      <h2 style={{ color: 'darkblue'}}>{title}</h2>
-      <p style={{ color: 'darkblue', textAlign: 'left' }}>{text}</p>
-      <p style={{ color: 'darkblue', textAlign: 'left' }}>{data}</p>
+      <h2 style={{ color: 'black'}}>{text.length > 0 ? "Task " + title : ""}</h2>
+      <p style={{ color: 'black', textAlign: 'left' }}>{text}</p>
+      <p style={{ color: color, textAlign: 'left' }}>{text.length > 0 ? data : ""}</p>
     </>
   )
 }
