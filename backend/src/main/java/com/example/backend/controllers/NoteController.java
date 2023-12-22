@@ -85,6 +85,18 @@ public class NoteController
   }
 
   @Operation(
+      summary = "Find 3 last updated Notes",
+      description = "Get 3 Notes that was last updated.",
+      tags = {"get"})
+  @GetMapping("/last-updated")
+  @JsonView(Views.Get.class)
+  public Collection<NoteDto> getTop3ByUpdateDate()
+  {
+    log.debug ("Find 3 last updated notes");
+    return noteService.findTop3ByUpdateDate();
+  }
+
+  @Operation(
       summary = "Update a Note by Id",
       description = "Update a Note object by specifying its id.",
       tags = {"put"})

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+
 @Service
 @RequiredArgsConstructor
 public class NoteService 
@@ -35,6 +36,13 @@ public class NoteService
   public Collection<NoteDto> findByCreatedBy (String owner) 
   {
     return noteRepo.findByCreatedBy(owner).stream()
+      .map(noteMapper::toDto)
+      .toList();
+  }
+
+  public Collection<NoteDto> findTop3ByUpdateDate () 
+  {
+    return noteRepo.findTop3ByLastModifiedDate().stream()
       .map(noteMapper::toDto)
       .toList();
   }

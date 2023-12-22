@@ -1,5 +1,7 @@
 package com.example.backend.dto;
 
+import java.time.Instant;
+
 import com.fasterxml.jackson.annotation.JsonView;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
@@ -30,4 +32,7 @@ public class NoteDto
 
   @JsonView({Views.Get.class, Views.Put.class})
   String createdBy;
+
+  @JsonView({Views.Get.class})
+  Instant lastModifiedDate;
 }
