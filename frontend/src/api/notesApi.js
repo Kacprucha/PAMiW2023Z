@@ -18,6 +18,13 @@ export const notesApi = {
     })
   },
 
+  getTop3ByUpdateDate(token) {
+    console.log('Get 3 last updated notes')
+    return noteClient.get(`/last-updated`, {
+      headers: { Authorization: bearerAuth(token) }
+    })
+  },
+
   create (note, token) {
     console.log('Create note', note)
     return noteClient.post('', note, {
