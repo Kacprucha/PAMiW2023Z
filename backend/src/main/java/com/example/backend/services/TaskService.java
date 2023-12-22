@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.backend.dto.NoteDto;
 import com.example.backend.dto.TaskDto;
 import com.example.backend.entities.Task;
 import com.example.backend.mapping.TaskMapper;
@@ -38,6 +39,13 @@ public class TaskService
     public Collection<TaskDto> findByCreatedBy (String owner) 
     {
         return taskRepo.findByCreatedBy(owner).stream()
+        .map(taskMapper::toDto)
+        .toList();
+    }
+
+    public Collection<TaskDto> findTop3ByUpdateDate () 
+    {
+        return taskRepo.findTop3ByLastModifiedDate().stream()
         .map(taskMapper::toDto)
         .toList();
     }

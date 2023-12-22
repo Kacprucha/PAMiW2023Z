@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.backend.dto.NoteDto;
 import com.example.backend.dto.TaskDto;
 import com.example.backend.dto.Views;
 import com.example.backend.services.TaskService;
@@ -83,6 +84,18 @@ public class TaskController
     {
         log.debug ("Find task with id: {}", id);
         return taskService.findById (id);
+    }
+
+    @Operation(
+        summary = "Find 3 last updated Tasks",
+        description = "Get 3 Tasks that was last updated.",
+        tags = {"get"})
+    @GetMapping("/last-updated")
+    @JsonView(Views.Get.class)
+    public Collection<TaskDto> getTop3ByUpdateDate()
+    {
+        log.debug ("Find 3 last updated tasks");
+        return taskService.findTop3ByUpdateDate();
     }
 
     @Operation(

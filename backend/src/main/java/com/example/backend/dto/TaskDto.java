@@ -24,4 +24,7 @@ public class TaskDto
     @Schema(description = "Deadline date", example = "2023-11-01 17:32:06.451605+00")
     @JsonView({Views.Get.class, Views.Put.class, Views.Post.class})
     Instant deadline;
+
+    @JsonView({Views.Get.class})
+    Instant lastModifiedDate;
 }
