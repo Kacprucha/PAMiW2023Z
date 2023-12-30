@@ -11,7 +11,6 @@ export const Home = () => {
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    console.log(auth.isAuthenticated)
     if(auth.isAuthenticated) {
       const accessToken = auth.user.access_token
       notesApi.getTop3ByUpdateDate(accessToken)
@@ -82,8 +81,6 @@ const TaskInstance = (props) => {
   } else {
     color ='red';
   }
-
-  console.log(color + " | " + differenceInDays)
 
   return (
     <>

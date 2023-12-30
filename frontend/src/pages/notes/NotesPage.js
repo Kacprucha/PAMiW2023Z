@@ -10,11 +10,22 @@ export const NotesPage = () => {
   const [notes, setNotes] = useState([])
 
   useEffect(() => {
-    notesApi.getAll(accessToken)
-      .then((res) => {
-        setNotes(res.data)
-      })
-      .catch(err => console.error('[Fetch Error]:', err))
+    if (auth.user.profile.preferred_username == 'admin') 
+    {
+      notesApi.getAll(accessToken)
+        .then((res) => {
+          setNotes(res.data)
+        })
+        .catch(err => console.error('[Fetch Error]:', err))
+    }
+    else 
+    {
+      notesApi.getNotesByOwnerOrPublic(auth.user.profile.preferred_username, accessToken)
+        .then((res) => {
+          setNotes(res.data)
+        })
+        .catch(err => console.error('[Fetch Error]:', err))
+    }
   }, [])
 
   const remove = (id) => {

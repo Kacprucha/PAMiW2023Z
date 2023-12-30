@@ -25,6 +25,13 @@ export const notesApi = {
     })
   },
 
+  getNotesByOwnerOrPublic(owner, token) {
+    console.log('Get notes by owner: ', owner)
+    return noteClient.get(`/ownerOrPublic/${owner}`, {
+      headers: { Authorization: bearerAuth(token) }
+    })
+  },
+
   create (note, token) {
     console.log('Create note', note)
     return noteClient.post('', note, {
