@@ -97,6 +97,20 @@ public class NoteController
   }
 
   @Operation(
+      summary = "Find Notes created by or Notes not locked",
+      description = "Get Notes that was crated by specific user or are public.",
+      tags = {"get"})
+  @GetMapping("/ownerOrPublic/{owner}")
+  @JsonView(Views.Get.class)
+  public Collection<NoteDto> findNotesByOwnerOrNotLocked(
+    @Parameter(description = "Owner of notes.", example = "anonymous")
+    @PathVariable String owner)
+  {
+    log.debug ("Find notes created by owner: {}, or public", owner);
+    return noteService.findNotesByOwnerOrNotLocked(owner);
+  }
+
+  @Operation(
       summary = "Update a Note by Id",
       description = "Update a Note object by specifying its id.",
       tags = {"put"})

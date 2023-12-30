@@ -47,6 +47,13 @@ public class NoteService
       .toList();
   }
 
+  public Collection<NoteDto> findNotesByOwnerOrNotLocked (String owenr) 
+  {
+    return noteRepo.findByCreatedByOrLockedFalse(owenr).stream()
+      .map(noteMapper::toDto)
+      .toList();  
+  }
+
   public NoteDto create(NoteDto note) 
   {
     if (note.getId () != null) {

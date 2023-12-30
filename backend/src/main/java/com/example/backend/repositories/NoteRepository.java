@@ -12,4 +12,6 @@ public interface NoteRepository extends JpaRepository<Note, Long>
 
 	@Query("SELECT n FROM Note n ORDER BY n.lastModifiedDate DESC")
 	List<Note> findTop3ByLastModifiedDate ();
+
+	List<Note> findByCreatedByOrLockedFalse(String createdBy);
 }
