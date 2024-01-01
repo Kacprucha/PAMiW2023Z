@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.backend.dto.NoteDto;
 import com.example.backend.dto.TaskDto;
 import com.example.backend.entities.Task;
 import com.example.backend.mapping.TaskMapper;
