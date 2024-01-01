@@ -13,7 +13,7 @@ export const Home = () => {
   useEffect(() => {
     if(auth.isAuthenticated) {
       const accessToken = auth.user.access_token
-      notesApi.getTop3ByUpdateDate(accessToken)
+      notesApi.getTop3ByOwnerSortByUpdateDate(auth.user.profile.preferred_username, accessToken)
         .then((res) => {
           setNotes(res.data)
         })
@@ -58,7 +58,7 @@ const NoteInstance = (props) => {
 
   return (
     <>
-      <h2 style={{ color: 'black' }}>{"- " + title}</h2>
+      <h2 style={{ color: 'black' }}>{title && text ? "- " + title : ""}</h2>
       <p style={{ color: 'black' }}>{text}</p>
     </>
   )

@@ -25,6 +25,13 @@ export const notesApi = {
     })
   },
 
+  getTop3ByOwnerSortByUpdateDate(owner, token) {
+    console.log('Get 3 last updated notes crted by specific owner: ', owner)
+    return noteClient.get(`/author/3/${owner}`, {
+      headers: { Authorization: bearerAuth(token) }
+    })
+  },
+
   getNotesByOwnerOrPublic(owner, token) {
     console.log('Get notes by owner: ', owner)
     return noteClient.get(`/ownerOrPublic/${owner}`, {
