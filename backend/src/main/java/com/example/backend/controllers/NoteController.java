@@ -111,6 +111,20 @@ public class NoteController
   }
 
   @Operation(
+      summary = "Find 3 Notes created by",
+      description = "Get 3 Notes that was crated by specific user.",
+      tags = {"get"})
+  @GetMapping("/author/3/{owner}")
+  @JsonView(Views.Get.class)
+  public Collection<NoteDto> findTop3CratedBySortedByUpdateDate(
+    @Parameter(description = "Owner of notes.", example = "anonymous")
+    @PathVariable String owner)
+  {
+    log.debug ("Find notes created by owner: {}, or public", owner);
+    return noteService.findTop3CratedBySortedByUpdateDate(owner);
+  }
+
+  @Operation(
       summary = "Update a Note by Id",
       description = "Update a Note object by specifying its id.",
       tags = {"put"})

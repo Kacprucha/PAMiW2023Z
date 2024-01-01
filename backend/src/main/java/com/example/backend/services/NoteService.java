@@ -54,6 +54,13 @@ public class NoteService
       .toList();  
   }
 
+  public Collection<NoteDto> findTop3CratedBySortedByUpdateDate (String owner) 
+    {
+        return noteRepo.findTop3ByCreatedByOrderByLastModifiedDateDesc(owner).stream()
+        .map(noteMapper::toDto)
+        .toList();
+    }
+
   public NoteDto create(NoteDto note) 
   {
     if (note.getId () != null) {

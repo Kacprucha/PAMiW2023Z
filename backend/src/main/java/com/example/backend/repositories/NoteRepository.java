@@ -14,4 +14,6 @@ public interface NoteRepository extends JpaRepository<Note, Long>
 	List<Note> findTop3ByLastModifiedDate ();
 
 	List<Note> findByCreatedByOrLockedFalse(String createdBy);
+
+	List<Note> findTop3ByCreatedByOrderByLastModifiedDateDesc(String createdBy);
 }
