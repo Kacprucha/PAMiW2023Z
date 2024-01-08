@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-    android:minHeight="64dp">
+    android:minHeight="100dp">
 
     <TextView
         android:id="@+id/textId"
@@ -45,7 +45,32 @@
         android:layout_gravity="center_vertical"
         android:layout_toEndOf="@id/textId"
         android:maxLines="1"
-        android:paddingTop="8dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="16dp"
+        android:textAppearance="?attr/textAppearanceBodySmall" />
+
+    <TextView
+        android:id="@+id/textLocked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textText"
+        android:layout_gravity="center_vertical"
+        android:layout_toEndOf="@id/textId"
+        android:maxLines="1"
+        android:paddingTop="18dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="16dp"
+        android:textAppearance="?attr/textAppearanceBodySmall" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textText"
+        android:layout_gravity="center_vertical"
+        android:layout_toEndOf="@id/textId"
+        android:maxLines="1"
+        android:paddingTop="36dp"
         android:paddingStart="0dp"
         android:paddingEnd="16dp"
         android:textAppearance="?attr/textAppearanceBodySmall" />
