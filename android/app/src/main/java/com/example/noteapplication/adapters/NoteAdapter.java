@@ -17,10 +17,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder>
 {
     private final List<Note> notes;
 
-    public NoteAdapter(List<Note> notes) {
-        this.notes = notes;
-    }
-
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -56,6 +52,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder>
         private final TextView textTitle;
         private final TextView textText;
         private final TextView textCreatedBy;
+        private final TextView textLocked;
+        private final TextView textDate;
 
         public NoteViewHolder(@NonNull View view) {
             super(view);
@@ -63,6 +61,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder>
             textTitle = (TextView) view.findViewById(R.id.textTitle);
             textText = (TextView) view.findViewById(R.id.textText);
             textCreatedBy = (TextView) view.findViewById(R.id.textCreatedBy);
+            textLocked = (TextView) view.findViewById((R.id.textLocked));
+            textDate = (TextView) view.findViewById((R.id.textDate));
         }
 
         public void update(Note note) {
@@ -70,6 +70,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder>
             textTitle.setText(note.getTitle());
             textText.setText(note.getText());
             textCreatedBy.setText(note.getCreatedBy());
+            textLocked.setText("Is it locked: " + note.getLocked().toString());
+            textDate.setText("Laste modyfied date: " + note.getLastModifiedDate());
         }
     }
 }

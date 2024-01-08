@@ -12,9 +12,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.util.List;
 import javax.inject.Inject;
 
+@HiltViewModel
 public class NoteViewModel extends ViewModel
 {
-    private static final String TAG = "ParcelViewModel";
+    private static final String TAG = "NoteViewModel";
 
     private final NoteApiService noteApiService;
     private final MutableLiveData<List<Note>> notes = new MutableLiveData<>();
@@ -34,6 +35,6 @@ public class NoteViewModel extends ViewModel
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> notes.setValue(result),
-                        error -> Log.e(TAG, "getParcels: " + error.getMessage(), error));
+                        error -> Log.e(TAG, "getNotes: " + error.getMessage(), error));
     }
 }

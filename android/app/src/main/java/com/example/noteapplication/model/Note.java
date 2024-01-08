@@ -1,5 +1,7 @@
 package com.example.noteapplication.model;
 
+import java.time.Instant;
+
 import lombok.Builder;
 import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
@@ -10,39 +12,10 @@ import lombok.extern.jackson.Jacksonized;
 public class Note
 {
     private Long id;
+    private Boolean locked;
     private String title;
     private String text;
     private String createdBy;
+    private String lastModifiedDate;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
 }
